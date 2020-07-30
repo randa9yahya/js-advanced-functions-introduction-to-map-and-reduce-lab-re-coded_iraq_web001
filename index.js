@@ -1,44 +1,62 @@
 // Your code here
-
-function mapToNegativize(arry){
-  return arry.map(x => x * -1);
+function mapToNegativize(sourceArray) {
+  let newArr = []
+  sourceArray.forEach(item => {
+    newArr.push(item * -1)
+  })
+  return newArr
 }
-console.log(mapToNegativize[1, 2, 3, -9]);
 
- function mapToNoChange(sourceArray) {
-   return sourceArray;
-  // return sourceArray.map( arry => arry === sourceArray);
- }
-let array =["paul", "gurney", "vladimir", "jessica", "chani"];
-let noChange = array.map(mapToNoChange) ;
-// console.log(mapToNoChange["paul", "gurney", "vladimir", "jessica", "chani"]);
-
-function mapToDouble(num){
-  return num.map(x => x * 2);
+function mapToNoChange(sourceArray) {
+  let newArr = [...sourceArray]
+  return newArr
 }
-console.log(mapToNegativize[1, 2, 3, -9]);
 
-function mapToSquare(num){
-  return num.map(function (x) {
-    return Math.pow(x,2);
-  });
+function mapToDouble(sourceArray) {
+  let newArr = []
+  sourceArray.forEach(item => {
+    newArr.push(item * 2)
+  })
+  return newArr
 }
-console.log(mapToSquare[1, 2, 3, -9]);
 
+function mapToSquare(sourceArray) {
+  let newArr = []
+  sourceArray.forEach(item => {
+    newArr.push(item ** 2)
+  })
+  return newArr
+}
 
 function reduceToTotal(sourceArray, startingPoint) {
- reducer = (accumulator, currentValue) => accumulator + currentValue;
-  return reducer.reduce(sourceArray,startingPoint);
+  if (!startingPoint) {
+    startingPoint = 0;
+  }
+  let total = startingPoint;
+  sourceArray.forEach(item => {
+    total += item
+  })
+  return total
 }
-console.log(reduceToTotal([1,2,3],100));
 
- function reduceToAllTrue(sourceArray){
-   return sourceArray;
- }
-[1, 2, true, "razmatazz"].every(reduceToAllTrue);
-
-
- function reduceToAnyTrue(sourceArray){
-   return sourceArray;
+function reduceToAllTrue(sourceArray) {
+  let truthy = true;
+  sourceArray.forEach(item => {
+    if(!item) {
+      truthy = false;
+      return;
+    }
+  })
+  return truthy
 }
-[ false, null, null, null].some(reduceToAnyTrue);
+
+function reduceToAnyTrue(sourceArray) {
+  let truthy = false;
+  sourceArray.forEach(item => {
+    if(item) {
+      truthy = true;
+      return;
+    }
+  })
+  return truthy
+}
